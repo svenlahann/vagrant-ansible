@@ -1,0 +1,40 @@
+---
+- name: install apache
+  apt: name=apache2 state=present
+
+- name: enable mod_rewrite
+  command: a2enmod rewrite
+
+- name: enable mod_ssl
+  command: a2enmod ssl
+
+- name: create ssl directory
+  file: path=/home/vagrant/etc/ssl state=directory
+
+- name: initialize ssl crt
+  template:
+    src=ssl/dummy.crt
+    dest=/home/vagrant/etc/ssl/dummy.crt
+
+- name: initialize ssl key
+  template:
+    src=ssl/dummy.key
+    dest=/home/vagrant/etc/ssl/dummy.key
+
+- name: initialize virtual host
+  template:
+    src=vhost.conf.j2
+    dest=/etc/apache2/sites-available/vagrant.conf
+
+- name: remove default virtual host
+  file:
+    path=/etc/apache2/sites-enabled/000-default
+    state=absent
+
+- name: enable virtual host
+  file:
+    src=/etc/apache2/sites-available/vagrant.conf
+    dest=/etc/apache2/sites-enabled/vagrant.conf
+    state=link
+  notify:
+    - reload apache

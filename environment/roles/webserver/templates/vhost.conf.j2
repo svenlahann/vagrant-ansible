@@ -1,0 +1,41 @@
+<VirtualHost *:80>
+  ServerAdmin webmaster@localhost
+
+  ServerName app.loc
+
+  DocumentRoot {{ document_root }}
+
+  <Directory {{ document_root }}>
+      Options Indexes FollowSymLinks
+        AllowOverride All
+        Order allow,deny
+        allow from all
+  </Directory>
+
+  ErrorLog {{ logs_root }}/apache_error.log
+  CustomLog {{ logs_root }}/apache_access.log combined
+
+</VirtualHost>
+
+<VirtualHost *:443>
+  ServerAdmin webmaster@localhost
+
+  ServerName app.loc
+
+  DocumentRoot {{ document_root }}
+
+  <Directory {{ document_root }}>
+      Options Indexes FollowSymLinks
+        AllowOverride All
+        Order allow,deny
+        allow from all
+  </Directory>
+
+  SSLEngine on
+  SSLCertificateKeyFile /home/vagrant/etc/ssl/dummy.key
+  SSLCertificateFile /home/vagrant/etc/ssl/dummy.crt
+
+  ErrorLog {{ logs_root }}/apache_error_ssl.log
+  CustomLog {{ logs_root }}/apache_access_ssl.log combined
+
+</VirtualHost>

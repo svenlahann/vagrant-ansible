@@ -1,0 +1,18 @@
+---
+- name: install mysql
+  apt: name=mysql-server state=present
+
+- name: install python-mysqldb  
+  apt: name=python-mysqldb state=present
+
+- name: Check to see if database exists
+  stat: path=/home/vagrant/craft/database.sql
+  register: database
+
+- name: create database (only when present)
+  mysql_db: name=database state=present collation=utf8_general_ci encoding=utf8
+  when: database.stat.exists == true
+
+- name: import database (only when present)
+  mysql_db: name=database state=import target=/home/vagrant/craft/database.sql
+  when: database.stat.exists == true

@@ -1,0 +1,14 @@
+---
+- hosts: all
+  sudo: true
+  vars:
+    document_root: /home/vagrant/htdocs
+    craft_root: /home/vagrant/craft
+    logs_root: /home/vagrant/log
+  pre_tasks:
+    - name: update apt cache
+      apt: update_cache=yes
+  roles:
+    - system
+    - webserver
+    - database

@@ -1,0 +1,43 @@
+---
+- name: install php
+  apt: name=php5 state=present
+
+- name: install php gd
+  apt: name=php5-gd state=present
+
+- name: install php mysql
+  apt: name=php5-mysql state=present
+
+- name: install php imagemagick
+  apt: name=php5-imagick state=present
+
+- name: install php xdebug
+  apt: name=php5-xdebug state=present
+
+- name: install php curl
+  apt: name=php5-curl state=present
+
+- name: install php memcached
+  apt: name=php5-memcached state=present
+
+- name: install php mcrypt  
+  apt: name=php5-mcrypt state=present
+
+- name: install composer globally
+  shell: curl -sS https://getcomposer.org/installer | /usr/bin/php && /bin/mv -f composer.phar /usr/local/bin/composer creates=/usr/local/bin/composer
+
+- name: install symfony installer globally
+  shell: sudo curl -LsS http://symfony.com/installer -o /usr/local/bin/symfony
+- file: path=/usr/local/bin/symfony mode="a+x" 
+
+- name: copy across additional php.ini
+  template:
+    src=php.ini.j2
+    dest=/etc/php5/conf.d/00-php.ini
+
+- name: copy across additional php.ini
+  template:
+    src=xdebug.ini.j2
+    dest=/etc/php5/conf.d/90-xdebug.ini
+  notify:
+  - reload apache

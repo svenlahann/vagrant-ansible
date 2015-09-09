@@ -1,0 +1,15 @@
+---
+- name: install imagemagick
+  apt: name=imagemagick state=present
+
+- name: install curl
+  apt: name=curl state=present
+
+- name: install memcached
+  apt: name=memcached state=present
+
+- name: install git
+  apt: name=git state=present
+
+- name: install midnight commander
+  apt: name=mc state=present  
