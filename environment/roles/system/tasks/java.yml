@@ -1,0 +1,7 @@
+---
+- name: install java openjdk
+  apt: name=default-jdk state=present
+- name: install tomcat7
+  apt: name=tomcat7 state=present
+- name: install tomcat7 admin
+  apt: name=tomcat7-admin state=present
