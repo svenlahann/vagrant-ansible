@@ -33,11 +33,11 @@
 - name: copy across additional php.ini
   template:
     src=php.ini.j2
-    dest=/etc/php5/conf.d/00-php.ini
+    dest=/etc/php5/apache2/conf.d/00-php.ini
 
 - name: copy across additional php.ini
   template:
     src=xdebug.ini.j2
-    dest=/etc/php5/conf.d/90-xdebug.ini
+    dest=/etc/php5/apache2/conf.d/90-xdebug.ini
   notify:
   - reload apache
