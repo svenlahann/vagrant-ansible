@@ -8,8 +8,7 @@
   <Directory {{ document_root }}>
       Options Indexes FollowSymLinks
         AllowOverride All
-        Order allow,deny
-        allow from all
+        Require all granted
   </Directory>
 
   ErrorLog {{ logs_root }}/apache_error.log
@@ -27,8 +26,7 @@
   <Directory {{ document_root }}>
       Options Indexes FollowSymLinks
         AllowOverride All
-        Order allow,deny
-        allow from all
+        Require all granted
   </Directory>
 
   SSLEngine on

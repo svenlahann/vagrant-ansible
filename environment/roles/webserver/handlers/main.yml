@@ -1,6 +1,6 @@
 ---
 - name: reload apache
-  service: name=apache2 state=reloaded
+  command: sudo /etc/init.d/apache2 restart
 
 - name: restart exim4
-  service: name=exim4 state=reloaded
+  command: sudo /etc/init.d/exim4 restart
