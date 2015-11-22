@@ -8,7 +8,6 @@ Requirements
 
 * [Vagrant](https://www.vagrantup.com/)
 * [Ansible](http://www.ansible.com/)
-* on windows system [cygwin](https://www.cygwin.com/) or an equivalent is needed for ansible
 
 Usage
 -----
