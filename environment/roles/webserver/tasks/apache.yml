@@ -8,6 +8,9 @@
 - name: enable mod_ssl
   command: a2enmod ssl
 
+- name: enable mod_headers
+  command: a2enmod headers
+
 - name: create ssl directory
   file: path=/home/vagrant/etc/ssl state=directory
 
