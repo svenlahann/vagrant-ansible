@@ -1,7 +1,7 @@
-vagrant lamp setup
-==================
+vagrant jessie lamp setup
+=========================
 
-**a vagrant setup for php projects**
+**vagrant setup for modern php projects**
 
 Requirements
 ------------
@@ -37,6 +37,11 @@ $ vagrant reload --provision
 $ vagrant ssh
 ```
 
+System Configuration
+--------------------
+* OS: Debian Jessie
+* RAM: 1GB
+
 SSH Configuration
 -----------------
 * System IP: 192.168.33.10
@@ -51,7 +56,7 @@ Shares
 
 Setup
 -----
-#### Installed and configured system packages
+#### Installed system packages
 
 * imagemagick
 * curl
@@ -62,6 +67,8 @@ Setup
 * exim4
 * git
 * midnight commander
+* java openjdk
+* tomcat7
 
 #### Installed php modules
 
@@ -73,7 +80,7 @@ Setup
 * memcached
 * mcrypt
 
-## Globally installed helpers 
+#### Global helpers 
 
 * composer
 * symfony installer
