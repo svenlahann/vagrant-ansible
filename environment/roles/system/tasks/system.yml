@@ -19,3 +19,6 @@
 
 - name: install grunt
   npm: name=grunt-cli global=yes state=present
+
+- name: install gulp
+  npm: name=gulp global=yes state=present
