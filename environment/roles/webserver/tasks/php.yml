@@ -30,6 +30,9 @@
   shell: sudo curl -LsS http://symfony.com/installer -o /usr/local/bin/symfony
 - file: path=/usr/local/bin/symfony mode="a+x" 
 
+- name: install drush
+  shell: wget http://files.drush.org/drush.phar && php drush.phar core-status && chmod +x drush.phar && mv drush.phar /usr/local/bin/drush && drush init
+
 - name: copy across additional php.ini
   template:
     src=php.ini.j2
