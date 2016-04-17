@@ -14,11 +14,8 @@
 - name: install midnight commander
   apt: name=mc state=present
 
-#- name: install npm apt sources
-#  shell: curl -sL https://deb.nodesource.com/setup_5.x | bash - creates=/etc/apt/sources.list.d/nodesource.list
+- name: install npm apt sources
+  shell: curl https://nodejs.org/dist/v5.10.1/node-v5.10.1-linux-x64.tar.xz | tar --file=- --extract --xz --directory /usr/local/ --strip-components=1
 
-#- name: install npm
-#  apt: name=npm state=present
-
-#- name: install grunt
-#  npm: name=grunt-cli global=yes state=present
+- name: install grunt
+  npm: name=grunt-cli global=yes state=present
