@@ -30,8 +30,15 @@
   shell: sudo curl -LsS http://symfony.com/installer -o /usr/local/bin/symfony
 - file: path=/usr/local/bin/symfony mode="a+x" 
 
+- name: install laravel installer
+  shell: composer global require "laravel/installer"
+
 - name: install drush
-  shell: wget http://files.drush.org/drush.phar && php drush.phar core-status && chmod +x drush.phar && mv drush.phar /usr/local/bin/drush && drush init
+  command: "{{ item }}" 
+  with_items:
+    - wget http://files.drush.org/drush.phar 
+    - chmod +x drush.phar 
+    - mv drush.phar /usr/local/bin/drush
 
 - name: copy across additional php.ini
   template:

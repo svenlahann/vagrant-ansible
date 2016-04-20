@@ -68,7 +68,7 @@ Setup
 * git
 * midnight commander
 * java openjdk
-* tomcat7
+* apache solr
 
 #### Installed php modules
 
@@ -84,6 +84,8 @@ Setup
 
 * composer
 * symfony installer
+* drush
+* laravel
 
 Links
 -----
@@ -91,3 +93,5 @@ Links
 * [Vagrant](https://www.vagrantup.com) - "Development environments made easy."
 * [Composer](https://getcomposer.org) - "Dependency Manager for PHP"
 * [Symfony Installer](https://symfony.com/doc/current/book/installation.html) - "Installing the Symfony Installer"
+* [Drush](http://www.drush.org/en/master/) - "Drupal Shell"
+* [Laravel Installer](https://laravel.com/docs/5.2#installing-laravel) - "Via Laravel Installer"
