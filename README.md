@@ -7,7 +7,15 @@ Requirements
 ------------
 
 * [Vagrant](https://www.vagrantup.com/)
+* [VirtualBox](https://www.virtualbox.org/)
 * [Ansible](http://www.ansible.com/)
+
+Recommendations
+---------------
+```
+vagrant plugin install vagrant-vbguest
+vagrant plugin install vagrant-hostmanager
+```
 
 Usage
 -----
