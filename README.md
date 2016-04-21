@@ -1,5 +1,5 @@
-vagrant jessie lamp setup
-=========================
+vagrant debian jessie lamp setup
+================================
 
 **vagrant setup for modern php projects**
 
@@ -48,7 +48,7 @@ $ vagrant ssh
 System Configuration
 --------------------
 * OS: Debian Jessie
-* RAM: 1GB
+* RAM: 2GB
 
 SSH Configuration
 -----------------
