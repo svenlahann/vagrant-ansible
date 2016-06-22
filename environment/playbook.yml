@@ -1,6 +1,7 @@
 ---
 - hosts: all
-  sudo: true
+  become: true
+  become_user: root
   vars:
     document_root: /home/vagrant/htdocs
     craft_root: /home/vagrant/craft
