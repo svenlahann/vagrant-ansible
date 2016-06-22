@@ -17,33 +17,24 @@
 - name: install php curl
   apt: name=php5-curl state=present
 
+- name: install php sqlite
+  apt: name=php5-sqlite state=present
+
 - name: install php memcached
   apt: name=php5-memcached state=present
 
-- name: install php mcrypt  
+- name: install php mcrypt
   apt: name=php5-mcrypt state=present
 
-- name: install composer globally
-  shell: curl -sS https://getcomposer.org/installer | /usr/bin/php && /bin/mv -f composer.phar /usr/local/bin/composer creates=/usr/local/bin/composer
-
-- name: install symfony installer globally
-  shell: sudo curl -LsS http://symfony.com/installer -o /usr/local/bin/symfony
-- file: path=/usr/local/bin/symfony mode="a+x" 
-
-- name: install laravel installer
-  shell: composer global require "laravel/installer"
-
-- name: install drush
-  command: "{{ item }}" 
-  with_items:
-    - wget http://files.drush.org/drush.phar 
-    - chmod +x drush.phar 
-    - mv drush.phar /usr/local/bin/drush
-
-- name: copy across additional php.ini
+- name: copy across additional apache php.ini
   template:
     src=php.ini.j2
     dest=/etc/php5/apache2/conf.d/00-php.ini
+
+- name: copy across additional apache php.ini
+  template:
+    src=php.ini.j2
+    dest=/etc/php5/cli/conf.d/00-php.ini
 
 - name: copy across additional php.ini
   template:
@@ -51,3 +42,28 @@
     dest=/etc/php5/apache2/conf.d/90-xdebug.ini
   notify:
   - reload apache
+
+- name: install composer globally
+  shell: curl -sS https://getcomposer.org/installer | /usr/bin/php && /bin/mv -f composer.phar /usr/local/bin/composer creates=/usr/local/bin/composer
+
+- name: install symfony installer globally
+  shell: sudo curl -LsS http://symfony.com/installer -o /usr/local/bin/symfony
+- file: path=/usr/local/bin/symfony mode="a+x"
+
+- name: install laravel installer
+  raw: composer global require "laravel/installer"
+
+- name: install drush
+  command: "{{ item }}"
+  with_items:
+    - wget http://files.drush.org/drush.phar
+    - chmod +x drush.phar
+    - mv drush.phar /usr/local/bin/drush
+
+- name: install drupal console
+  command: "{{ item }}"
+  with_items:
+    - curl https://drupalconsole.com/installer -L -o drupal.phar
+    - chmod +x drupal.phar
+    - mv drupal.phar /usr/local/bin/drupal
+

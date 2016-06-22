@@ -2,7 +2,7 @@
 - name: install mysql
   apt: name=mysql-server state=present
 
-- name: install python-mysqldb  
+- name: install python-mysqldb
   apt: name=python-mysqldb state=present
 
 - name: Check to see if database exists

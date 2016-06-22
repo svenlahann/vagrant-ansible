@@ -16,4 +16,3 @@
     - ./solr-5.5.0/bin/install_solr_service.sh solr-5.5.0.tgz
     - rm solr-5.5.0.tgz
     - rm -rf solr-5.5.0
-
