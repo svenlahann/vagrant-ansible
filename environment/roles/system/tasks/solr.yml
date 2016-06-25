@@ -1,0 +1,19 @@
+---
+- name: clear solr installation
+  file: path=/opt/solr state=absent
+
+- name: install apache solr
+  command: "{{ item }}"
+  with_items:
+    - wget http://archive.apache.org/dist/lucene/solr/4.10.4/solr-4.10.4.tgz
+    - tar xvf solr-4.10.4.tgz
+    - mv solr-4.10.4 /opt/solr
+    - rm solr-4.10.4.tgz
+
+- name: install tomcat stuff
+  become: true
+  become_user: root
+  command: "{{ item }}"
+  with_items:
+    - cp -R /opt/solr/example/lib/ext/. /opt/tomcat/lib
+    - chown -R tomcat:tomcat /opt/tomcat

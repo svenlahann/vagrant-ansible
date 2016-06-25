@@ -1,0 +1,22 @@
+---
+- name: clear tomcat installation
+  file: path=/opt/tomcat state=absent
+
+- name: clear tomcat user
+  user: name=tomcat state=absent
+
+- name: install tomcat 8
+  command: "{{ item }}"
+  with_items:
+    - wget http://archive.apache.org/dist/tomcat/tomcat-8/v8.0.36/bin/apache-tomcat-8.0.36.tar.gz
+    - tar xvf apache-tomcat-8.0.36.tar.gz
+    - mv apache-tomcat-8.0.36 /opt/tomcat
+    - useradd -Mb /usr/local tomcat
+    - chown -R tomcat:tomcat /opt/tomcat
+    - sudo -u tomcat /opt/tomcat/bin/startup.sh
+    - rm apache-tomcat-8.0.36.tar.gz
+
+- name: set acls for tomcat applications
+  template:
+    src=tomcat-users.xml.j2
+    dest=/opt/tomcat/conf/tomcat-users.xml

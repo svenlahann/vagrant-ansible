@@ -1,3 +1,5 @@
 ---
 - include: system.yml
-#- include: java.yml
+- include: java.yml
+- include: tomcat.yml
+- include: solr.yml
