@@ -1,0 +1,5 @@
+---
+- name: get solr core
+  git: repo=git@gitlab.einpol.de:devops/typo3-solr.git
+       dest=/opt/solr-typo3
+       accept_hostkey=true

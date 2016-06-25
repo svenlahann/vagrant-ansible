@@ -3,3 +3,4 @@
 - include: java.yml
 - include: tomcat.yml
 - include: solr.yml
+#- include: solr-typo3.yml
