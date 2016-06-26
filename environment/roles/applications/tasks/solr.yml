@@ -9,11 +9,13 @@
     - tar xvf solr-4.10.4.tgz
     - mv solr-4.10.4 /opt/solr
     - rm solr-4.10.4.tgz
+  notify: restart tomcat
 
-- name: install tomcat stuff
+- name: install solr tomcat requirements
   become: true
   become_user: root
   command: "{{ item }}"
   with_items:
     - cp -R /opt/solr/example/lib/ext/. /opt/tomcat/lib
     - chown -R tomcat:tomcat /opt/tomcat
+  notify: restart tomcat

@@ -1,0 +1,36 @@
+---
+- name: download redis server
+  become: true
+  become_user: root
+  command: "{{ item }}"
+  with_items:
+    - wget http://download.redis.io/releases/redis-stable.tar.gz
+    - tar xzf redis-stable.tar.gz
+
+- name: install redis server
+  become: true
+  become_user: root
+  command: make chdir=/home/vagrant/redis-stable
+
+- name: update redis configuration
+  template:
+    src=redis.conf.j2
+    dest=/home/vagrant/redis-stable/redis.conf
+
+- name: install redis server
+  become: true
+  become_user: root
+  command: make install chdir=/home/vagrant/redis-stable
+
+- name: start redis server
+  become: true
+  become_user: root
+  command: redis-server /home/vagrant/redis-stable/redis.conf
+
+- name: cleanup redis distribution
+  become: true
+  become_user: root
+  command: "{{ item }}"
+  with_items:
+    - rm redis-stable.tar.gz
+    - rm -rf redis-stable

@@ -1,4 +1,4 @@
-vagrant debian jessie lamp setup
+vagrant debian lamp setup
 ================================
 
 **vagrant setup for modern php projects**
@@ -54,13 +54,18 @@ SSH Configuration
 -----------------
 * System IP: 192.168.33.10
 * Hostname: app.loc
-* Ports: 80 => 8080, 8000 => 8000, 443 => 8443
 
 Shares
 ------
 * /craft
 * /htdocs
 * /log
+
+Application Configuration
+-------------------------
+* Apache´s running on default port 80
+* Tomcat´s running on default port 8080
+* Redis´s running on default port 6379
 
 Setup
 -----
@@ -76,7 +81,12 @@ Setup
 * git
 * midnight commander
 * java openjdk
-* apache solr
+
+#### Installed applications
+
+* apache tomcat 8
+* apache solr 4.10.4
+* redis
 
 #### Installed php modules
 
@@ -88,11 +98,12 @@ Setup
 * memcached
 * mcrypt
 
-#### Global helpers 
+#### Global helpers
 
 * composer
 * symfony installer
 * drush
+* drupal console
 * laravel
 
 Links
@@ -102,4 +113,5 @@ Links
 * [Composer](https://getcomposer.org) - "Dependency Manager for PHP"
 * [Symfony Installer](https://symfony.com/doc/current/book/installation.html) - "Installing the Symfony Installer"
 * [Drush](http://www.drush.org/en/master/) - "Drupal Shell"
+* [Drupal Console](https://drupalconsole.com/) - "The new CLI for Drupal"
 * [Laravel Installer](https://laravel.com/docs/5.2#installing-laravel) - "Via Laravel Installer"
