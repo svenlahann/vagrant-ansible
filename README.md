@@ -105,6 +105,9 @@ Setup
 * drush
 * drupal console
 * laravel
+* npm
+* grunt
+* gulp
 
 Links
 -----
