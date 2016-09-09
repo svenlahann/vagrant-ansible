@@ -1,7 +1,7 @@
-vagrant debian lamp setup
+Vagrant Debian lamp setup
 ================================
 
-**vagrant setup for modern php projects**
+**vagrant setup for professional modern php development**
 
 Requirements
 ------------
@@ -9,6 +9,13 @@ Requirements
 * [Vagrant](https://www.vagrantup.com/)
 * [VirtualBox](https://www.virtualbox.org/)
 * [Ansible](http://www.ansible.com/)
+
+Compatibility
+-------------
+
+* OSX
+* Windows 10
+* Linux
 
 Recommendations
 ---------------
@@ -44,6 +51,10 @@ $ vagrant reload --provision
 ```
 $ vagrant ssh
 ```
+
+#### Compatibility and Installation
+
+The system is compatible with OSX, Windows and Linux. It´s tested on OSX Yosemite and El Capitan and Windows 10. I will not go into installation details here, but on Windows 10 you´ll need to install a proper windows shell like [Babun](http://babun.github.io/) or [Cygwin](https://www.cygwin.com/). Please take note, that in most of cases you should use the current stable version of any software installed for the best experience.
 
 System Configuration
 --------------------
@@ -117,4 +128,10 @@ Links
 * [Symfony Installer](https://symfony.com/doc/current/book/installation.html) - "Installing the Symfony Installer"
 * [Drush](http://www.drush.org/en/master/) - "Drupal Shell"
 * [Drupal Console](https://drupalconsole.com/) - "The new CLI for Drupal"
-* [Laravel Installer](https://laravel.com/docs/5.2#installing-laravel) - "Via Laravel Installer"
+* [Laravel Installer](https://laravel.com/docs/5.2#installing-laravel) - "Laravel Installer"
+* [npm](https://www.npmjs.com/) - "NPM is the package manager for JavaScript."
+* [grunt](http://gruntjs.com/) - "The JavaScript Task Runner"
+* [gulp](http://gulpjs.com/) - "The streaming build system"
+* [Tomcat](http://tomcat.apache.org/) - "Apache Tomcat"
+* [Solr](http://tomcat.apache.org/) - "Apache Solr"
+* [Redis](http://redis.io/) - "Redis is an in-memory data structure store"
