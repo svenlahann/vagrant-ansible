@@ -1,6 +1,7 @@
 ---
 - name: clear tomcat installation
   file: path=/opt/tomcat state=absent
+  notify: stop tomcat
 
 - name: clear tomcat user
   user: name=tomcat state=absent

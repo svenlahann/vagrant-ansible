@@ -1,12 +1,2 @@
----
-- name: remove default exim4 configuration
-  file:
-    path=/etc/exim4/update-exim4.conf.conf
-    state=absent
-
-- name: initialize new exim4 configuration
-  template:
-    src=update-exim4.conf.conf.j2
-    dest=/etc/exim4/update-exim4.conf.conf
-  notify:
-    - restart exim4
+- name: install postfix
+  apt: name=postfix state=present

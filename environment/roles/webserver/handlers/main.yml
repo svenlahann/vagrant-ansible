@@ -1,6 +1,10 @@
 ---
 - name: reload apache
-  command: sudo /etc/init.d/apache2 restart
+  become: true
+  become_user: root
+  command: /etc/init.d/apache2 restart
 
 - name: restart exim4
-  command: sudo /etc/init.d/exim4 restart
+  become: true
+  become_user: root
+  command: /etc/init.d/exim4 restart

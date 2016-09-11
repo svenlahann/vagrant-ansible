@@ -47,11 +47,14 @@
   shell: curl -sS https://getcomposer.org/installer | /usr/bin/php && /bin/mv -f composer.phar /usr/local/bin/composer creates=/usr/local/bin/composer
 
 - name: install symfony installer globally
-  shell: sudo curl -LsS http://symfony.com/installer -o /usr/local/bin/symfony
+  shell: curl -LsS http://symfony.com/installer -o /usr/local/bin/symfony
 - file: path=/usr/local/bin/symfony mode="a+x"
 
 - name: install laravel installer
-  raw: composer global require "laravel/installer"
+  command: "{{ item }}"
+  with_items:
+    - composer global require "laravel/installer"
+    - echo 'export PATH="$PATH:$HOME/.composer/vendor/bin"' >> ~/.bashrc
 
 - name: install drush
   command: "{{ item }}"
@@ -66,4 +69,4 @@
     - curl https://drupalconsole.com/installer -L -o drupal.phar
     - chmod +x drupal.phar
     - mv drupal.phar /usr/local/bin/drupal
-
+    - drupal init
