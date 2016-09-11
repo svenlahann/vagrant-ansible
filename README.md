@@ -1,4 +1,4 @@
-Vagrant Debian lamp setup
+Vagrant Debian LAMP Setup
 ================================
 
 **vagrant setup for professional modern php development**
