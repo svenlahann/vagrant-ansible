@@ -1,2 +1,11 @@
+### system
+.DS_Store
+Thumbs.db
+
+### ide
+.nbproject
+.idea
+*.sublime-workspace
+
+### vagrant
 .vagrant/
-.idea/
