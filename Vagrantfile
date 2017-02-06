@@ -75,10 +75,11 @@ Vagrant.configure(2) do |config|
   # SHELL
 
   config.vm.provision "ansible_local" do |ansible|
-    ansible.playbook = "environment/playbook.yml"
-    # ansible.verbose = true
-    ansible.install = true
     ansible.install_mode = :pip
+    ansible.version = "latest"
+    ansible.playbook = "environment/playbook.yml"
+    # ansible.galaxy_role_file = "environment/requirements.yml"
+    # ansible.verbose = true
   end
 
 end

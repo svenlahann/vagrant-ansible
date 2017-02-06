@@ -3,7 +3,7 @@
   become: true
   become_user: root
   command: "{{ item }}"
-  args: 
+  args:
     chdir: /home/vagrant/
   with_items:
     - wget http://download.redis.io/releases/redis-stable.tar.gz

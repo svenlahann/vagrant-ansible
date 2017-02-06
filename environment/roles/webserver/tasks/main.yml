@@ -1,4 +1,3 @@
 ---
 - include: apache.yml
-- include: php.yml
 - include: mail.yml

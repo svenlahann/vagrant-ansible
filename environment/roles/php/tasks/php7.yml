@@ -1,0 +1,47 @@
+---
+- name: install php7.1
+  apt: name=php7.1 state=present
+
+- name: install php7.1-cli
+  apt: name=php7.1-cli state=present
+
+- name: install php7.1-mysql
+  apt: name=php7.1-mysql state=present
+
+- name: install php7.1-gd
+  apt: name=php7.1-gd state=present
+
+- name: install php7.1-imagemagick
+  apt: name=php7.1-imagick state=present
+
+- name: install php7.1-xdebug
+  apt: name=php7.1-xdebug state=present
+
+- name: install php7.1-curl
+  apt: name=php7.1-curl state=present
+
+- name: install php7.1-sqlite3
+  apt: name=php7.1-sqlite3 state=present
+
+- name: install php7.1-memcached
+  apt: name=php7.1-memcached state=present
+
+- name: install php7.1-mcrypt
+  apt: name=php7.1-mcrypt state=present
+
+- name: init php.ini for apache
+  template:
+    src=php7.ini.j2
+    dest=/etc/php/7.1/apache2/conf.d/00-php.ini
+
+- name: init php.ini for cli
+  template:
+    src=php7.ini.j2
+    dest=/etc/php/7.1/cli/conf.d/00-php.ini
+
+- name: init xdebug.ini
+  template:
+    src=xdebug.ini.j2
+    dest=/etc/php/7.1/apache2/conf.d/90-xdebug.ini
+  notify:
+  - reload apache

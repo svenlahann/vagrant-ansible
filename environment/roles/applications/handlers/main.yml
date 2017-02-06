@@ -10,5 +10,5 @@
   become: true
   become_user: root
   command: "{{ item }}"
-  with_items: 
+  with_items:
     - nohup /opt/tomcat/bin/catalina.sh stop

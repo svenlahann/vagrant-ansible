@@ -72,6 +72,10 @@ Shares
 * /htdocs
 * /log
 
+PHP Configuration
+-----------------
+* Depending on developer´s need, the system is able to run either php5 (as debian core package) or php7 (php7.1).
+
 Application Configuration
 -------------------------
 * Apache´s running on default port 80
@@ -87,11 +91,12 @@ Setup
 * memcached
 * mysql
 * apache
-* php
+* php / php7.1
 * exim4
 * git
 * midnight commander
-* java openjdk
+* java 8 openjdk
+* ant
 
 #### Installed applications
 
@@ -116,6 +121,7 @@ Setup
 * drush
 * drupal console
 * laravel
+* shopware cli tools
 * npm
 * grunt
 * gulp
@@ -129,6 +135,7 @@ Links
 * [Drush](http://www.drush.org/en/master/) - "Drupal Shell"
 * [Drupal Console](https://drupalconsole.com/) - "The new CLI for Drupal"
 * [Laravel Installer](https://laravel.com/docs/5.2#installing-laravel) - "Laravel Installer"
+* [Shopware CLI Tools](https://github.com/shopwareLabs/sw-cli-tools) - "The shopware CLI tools are your console helpers for all kind of Shopware tasks."
 * [npm](https://www.npmjs.com/) - "NPM is the package manager for JavaScript."
 * [grunt](http://gruntjs.com/) - "The JavaScript Task Runner"
 * [gulp](http://gulpjs.com/) - "The streaming build system"
