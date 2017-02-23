@@ -5,14 +5,13 @@ Vagrant Debian LAMP Setup
 
 Requirements
 ------------
-
 * [Vagrant](https://www.vagrantup.com/)
 * [VirtualBox](https://www.virtualbox.org/)
 * [Ansible](http://www.ansible.com/)
+* [rsync](https://en.wikipedia.org/wiki/Rsync)
 
 Compatibility
 -------------
-
 * OSX
 * Windows 10
 * Linux
@@ -113,6 +112,7 @@ Setup
 * curl
 * memcached
 * mcrypt
+* ioncube
 
 #### Global helpers
 

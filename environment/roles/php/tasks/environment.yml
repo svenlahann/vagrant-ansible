@@ -21,13 +21,14 @@
     - chmod +x drush.phar
     - mv drush.phar /usr/local/bin/drush
 
-- name: install drupal console
-  command: "{{ item }}"
-  with_items:
-    - curl https://drupalconsole.com/installer -L -o drupal.phar
-    - chmod +x drupal.phar
-    - mv drupal.phar /usr/local/bin/drupal
-    - drupal init
+# TODO: check problems related to drupal console and ioncube
+#- name: install drupal console
+#  command: "{{ item }}"
+#  with_items:
+#    - curl https://drupalconsole.com/installer -L -o drupal.phar
+#    - chmod +x drupal.phar
+#    - mv drupal.phar /usr/local/bin/drupal
+#    - drupal init
 
 - name: install shopware cli tools
   command: "{{ item }}"
