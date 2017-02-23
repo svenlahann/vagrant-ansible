@@ -8,8 +8,8 @@
 - name: install php7.0-mysql
   apt: name=php7.0-mysql state=present
 
-- name: install php7.0-gd
-  apt: name=php7.0-gd state=present
+#- name: install php7.0-gd
+#  apt: name=php7.0-gd state=present
 
 - name: install php7.0-imagemagick
   apt: name=php7.0-imagick state=present
