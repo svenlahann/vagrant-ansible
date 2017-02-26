@@ -1,6 +1,7 @@
 ### system
 .DS_Store
 Thumbs.db
+ubuntu*
 
 ### ide
 .nbproject

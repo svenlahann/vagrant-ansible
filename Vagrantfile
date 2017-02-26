@@ -12,7 +12,10 @@ Vagrant.configure(2) do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "ubuntu/xenial64"
+  # Uses non official box for ubuntu xenial 64, as offical ubuntu package is 
+  # not compliant to vagrant standards...
+  # Box supports virtual box, vmware and parallels provider
+  config.vm.box = "bento/ubuntu-16.04"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -29,21 +32,18 @@ Vagrant.configure(2) do |config|
   # using a specific IP.
   config.vm.network "private_network", ip: "192.168.33.10"
 
-  # Create machine hostname for project
+  # Set machine hostname for project
   config.vm.hostname = "app.dev"
 
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
   # your network.
   # config.vm.network "public_network"
-
-  # Share an additional folder to the guest VM. The first argument is
-  # the path on the host to the actual folder. The second argument is
-  # the path on the guest to mount the folder. And the optional third
+  
   # argument is a set of non-required options.
-  config.vm.synced_folder "htdocs", "/home/vagrant/htdocs", type: "nfs"
-  config.vm.synced_folder "craft", "/home/vagrant/craft", type: "nfs"
-  config.vm.synced_folder "log", "/home/vagrant/log", type: "nfs"
+  config.vm.synced_folder "htdocs", "/home/vagrant/htdocs", type: "rsync", rsync_exclude: ".git/"
+  config.vm.synced_folder "craft", "/home/vagrant/craft", type: "rsync", rsync_exclude: ".git/"
+  config.vm.synced_folder "log", "/home/vagrant/log", type: "rsync", rsync_exclude: ".git/"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
@@ -55,6 +55,8 @@ Vagrant.configure(2) do |config|
 
     # Customize the amount of memory on the VM:
     vb.memory = "2048"
+    vb.cpus = 2
+    vb.customize ["modifyvm", :id, "--ioapic", "on"]
   end
   #
   # View the documentation for the provider you are using for more
@@ -73,6 +75,11 @@ Vagrant.configure(2) do |config|
   # config.vm.provision "shell", inline <<-SHELL
   #   sudo apt-get install apache2
   # SHELL
+
+  # SSH Configuration Options
+  # config.ssh.forward_agent = true
+  # config.ssh.username = "vagrant"
+  # config.ssh.password = "vagrant"
 
   config.vm.provision "ansible_local" do |ansible|
     ansible.install_mode = :pip
