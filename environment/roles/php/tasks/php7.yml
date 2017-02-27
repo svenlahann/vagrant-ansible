@@ -32,6 +32,12 @@
 - name: install php7.0-xml
   apt: name=php7.0-xml state=present
 
+- name: install php7.0-mbstring
+  apt: name=php7.0-mbstring state=present
+
+- name: install php7.0-zip
+  apt: name=php7.0-zip state=present
+
 - name: init php.ini for apache
   template:
     src=php7.ini.j2
