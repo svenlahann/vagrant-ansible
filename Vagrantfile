@@ -39,11 +39,16 @@ Vagrant.configure(2) do |config|
   # Bridged networks make the machine appear as another physical device on
   # your network.
   # config.vm.network "public_network"
-  
+
   # argument is a set of non-required options.
-  config.vm.synced_folder "htdocs", "/home/vagrant/htdocs", type: "rsync", rsync_exclude: ".git/"
-  config.vm.synced_folder "craft", "/home/vagrant/craft", type: "rsync", rsync_exclude: ".git/"
-  config.vm.synced_folder "log", "/home/vagrant/log", type: "rsync", rsync_exclude: ".git/"
+
+  # config.vm.synced_folder "htdocs", "/home/vagrant/htdocs", type: "rsync", rsync_exclude: ".git/"
+  # config.vm.synced_folder "craft", "/home/vagrant/craft", type: "rsync", rsync_exclude: ".git/"
+  # config.vm.synced_folder "log", "/home/vagrant/log", type: "rsync", rsync_exclude: ".git/"
+
+  config.vm.synced_folder "htdocs", "/home/vagrant/htdocs", type: "nfs"
+  config.vm.synced_folder "craft", "/home/vagrant/craft", type: "nfs"
+  config.vm.synced_folder "log", "/home/vagrant/log", type: "nfs"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
