@@ -14,12 +14,12 @@
 #    - composer global require "laravel/installer"
 #    - echo 'export PATH="$PATH:$HOME/.composer/vendor/bin"' >> ~/.bashrc
 
-- name: install drush
-  command: "{{ item }}"
-  with_items:
-    - wget http://files.drush.org/drush.phar
-    - chmod +x drush.phar
-    - mv drush.phar /usr/local/bin/drush
+# - name: install drush
+#  command: "{{ item }}"
+#  with_items:
+#    - wget http://files.drush.org/drush.phar
+#    - chmod +x drush.phar
+#    - mv drush.phar /usr/local/bin/drush
 
 # TODO: check problems related to drupal console and ioncube
 #- name: install drupal console

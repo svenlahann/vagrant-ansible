@@ -4,7 +4,17 @@
   become_user: root
   command: /etc/init.d/apache2 restart
 
+- name: restart nginx
+  become: true
+  become_user: root
+  command: service nginx restart
+
 - name: restart exim4
   become: true
   become_user: root
   command: /etc/init.d/exim4 restart
+
+- name: restart php processor
+  become: true
+  become_user: root
+  command: sudo systemctl restart php7.0-fpm
