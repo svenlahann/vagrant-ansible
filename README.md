@@ -77,9 +77,9 @@ PHP Configuration
 
 Application Configuration
 -------------------------
-* Apache´s running on default port 80
-* Tomcat´s running on default port 8080
-* Redis´s running on default port 6379
+* Nginx is running on default port 80
+* MongoDB is running on default port 27017
+* Redis is running on default port 6379
 
 Setup
 -----
@@ -96,11 +96,12 @@ Setup
 * midnight commander
 * java 8 openjdk
 * ant
+* ack-grep
+* vim
 
 #### Installed applications
 
-* apache tomcat 8
-* apache solr 4.10.4
+* mongodb
 * redis
 
 #### Installed php modules
@@ -119,7 +120,6 @@ Setup
 * composer
 * symfony installer
 * drush
-* drupal console
 * laravel
 * shopware cli tools
 * npm
@@ -133,8 +133,7 @@ Links
 * [Composer](https://getcomposer.org) - "Dependency Manager for PHP"
 * [Symfony Installer](https://symfony.com/doc/current/book/installation.html) - "Installing the Symfony Installer"
 * [Drush](http://www.drush.org/en/master/) - "Drupal Shell"
-* [Drupal Console](https://drupalconsole.com/) - "The new CLI for Drupal"
-* [Laravel Installer](https://laravel.com/docs/5.2#installing-laravel) - "Laravel Installer"
+* [Laravel Installer](https://laravel.com/docs/5.4#installing-laravel) - "Laravel Installer"
 * [Shopware CLI Tools](https://github.com/shopwareLabs/sw-cli-tools) - "The shopware CLI tools are your console helpers for all kind of Shopware tasks."
 * [npm](https://www.npmjs.com/) - "NPM is the package manager for JavaScript."
 * [grunt](http://gruntjs.com/) - "The JavaScript Task Runner"

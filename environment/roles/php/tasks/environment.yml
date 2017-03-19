@@ -6,29 +6,20 @@
   shell: curl -LsS http://symfony.com/installer -o /usr/local/bin/symfony
 - file: path=/usr/local/bin/symfony mode="a+x"
 
-#- name: install laravel installer
-#  shell: "{{ item }}"
-#  become: true
-#  become_user: vagrant
-#  with_items:
-#    - composer global require "laravel/installer"
-#    - echo 'export PATH="$PATH:$HOME/.composer/vendor/bin"' >> ~/.bashrc
+- name: install laravel installer
+  shell: "{{ item }}"
+  become: true
+  become_user: vagrant
+  with_items:
+    - composer global require "laravel/installer"
+    - echo 'export PATH="$PATH:$HOME/.config/composer/vendor/bin"' >> ~/.bashrc
 
-# - name: install drush
-#  command: "{{ item }}"
-#  with_items:
-#    - wget http://files.drush.org/drush.phar
-#    - chmod +x drush.phar
-#    - mv drush.phar /usr/local/bin/drush
-
-# TODO: check problems related to drupal console and ioncube
-#- name: install drupal console
-#  command: "{{ item }}"
-#  with_items:
-#    - curl https://drupalconsole.com/installer -L -o drupal.phar
-#    - chmod +x drupal.phar
-#    - mv drupal.phar /usr/local/bin/drupal
-#    - drupal init
+- name: install drush
+  command: "{{ item }}"
+  with_items:
+    - wget http://files.drush.org/drush.phar
+    - chmod 777 drush.phar
+    - mv drush.phar /usr/local/bin/drush
 
 - name: install shopware cli tools
   command: "{{ item }}"

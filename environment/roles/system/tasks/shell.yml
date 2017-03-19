@@ -1,0 +1,13 @@
+---
+
+- name: install git-core
+  apt: name=git-core state=present
+- name: install zsh
+  apt: name=zsh state=present
+- name: install and configure zsh
+  shell: "{{ item }}"
+  with_items:
+    - sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    - chsh -s /bin/zsh vagrant
+- name: install fonts-powerline
+  apt: name=fonts-powerline state=present
