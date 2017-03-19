@@ -1,0 +1,15 @@
+---
+# https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
+- block:
+  - name: Import mongodb apt key
+    apt_key:
+        keyserver: keyserver.ubuntu.com
+        id: 0C49F3730359A14518585931BC711F9BA15703C6
+  - name: Add mongodb repository
+    apt_repository:
+        repo: deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse
+        state: present
+  - name: Install mongodb
+    apt:
+        name: mongodb-org
+        update_cache: yes

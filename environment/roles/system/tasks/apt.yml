@@ -7,11 +7,11 @@
   with_items:
     - apt-transport-https
 
-- name: install dotdeb repositories
-  apt_repository: repo="deb https://packages.sury.org/php jessie main" state=present
+#- name: install dotdeb repositories
+#  apt_repository: repo="deb https://packages.sury.org/php jessie main" state=present
 
-- name: install dotdeb key
-  apt_key: url="https://packages.sury.org/php/apt.gpg"
+#- name: install dotdeb key
+#  apt_key: url="https://packages.sury.org/php/apt.gpg"
 
 - name: update apt cache
   apt: update_cache=yes

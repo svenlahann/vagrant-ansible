@@ -1,4 +1,5 @@
 ---
-- include: tomcat.yml
-- include: solr.yml
-- include: redis.yml
+- include: mongodb.yml
+# - include: tomcat.yml
+# - include: solr.yml
+# - include: redis.yml

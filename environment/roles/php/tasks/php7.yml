@@ -1,42 +1,42 @@
 ---
 - name: install php7.0-fpm
-  apt: name=php7.0-fpm state=present
+  apt: name=php-fpm state=present
 
 - name: install php7.0-cli
-  apt: name=php7.0-cli state=present
+  apt: name=php-cli state=present
 
 - name: install php7.0-mysql
-  apt: name=php7.0-mysql state=present
+  apt: name=php-mysql state=present
 
 - name: install php7.0-gd
-  apt: name=php7.0-gd state=present
+  apt: name=php-gd state=present
 
 - name: install php7.0-imagemagick
-  apt: name=php7.0-imagick state=present
+  apt: name=php-imagick state=present
 
 - name: install php7.0-xdebug
-  apt: name=php7.0-xdebug state=present
+  apt: name=php-xdebug state=present
 
 - name: install php7.0-curl
-  apt: name=php7.0-curl state=present
+  apt: name=php-curl state=present
 
 - name: install php7.0-sqlite3
-  apt: name=php7.0-sqlite3 state=present
+  apt: name=php-sqlite3 state=present
 
 - name: install php7.0-memcached
-  apt: name=php7.0-memcached state=present
+  apt: name=php-memcached state=present
 
 - name: install php7.0-mcrypt
-  apt: name=php7.0-mcrypt state=present
+  apt: name=php-mcrypt state=present
 
 - name: install php7.0-xml
-  apt: name=php7.0-xml state=present
+  apt: name=php-xml state=present
 
 - name: install php7.0-mbstring
-  apt: name=php7.0-mbstring state=present
+  apt: name=php-mbstring state=present
 
 - name: install php7.0-zip
-  apt: name=php7.0-zip state=present
+  apt: name=php-zip state=present
 
 - name: init php.ini for nginx
   template:

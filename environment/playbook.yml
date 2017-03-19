@@ -14,4 +14,4 @@
     - webserver
     - database
     - php
-    # - applications
+    - applications
