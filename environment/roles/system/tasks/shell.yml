@@ -6,8 +6,13 @@
   apt: name=zsh state=present
 - name: install and configure zsh
   shell: "{{ item }}"
+  become: true
+  become_user: vagrant
   with_items:
-    - sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-    - chsh -s /bin/zsh vagrant
+    - sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+- name: set vagrant user shell
+  user:
+    name: vagrant
+    shell: /bin/zsh
 - name: install fonts-powerline
   apt: name=fonts-powerline state=present
