@@ -28,5 +28,12 @@
     - chmod 777 sw.phar
     - mv sw.phar /usr/local/bin/sw
 
+- name: install deployer
+  command: "{{ item }}"
+  with_items:
+    - curl -LO https://deployer.org/deployer.phar
+    - mv deployer.phar /usr/local/bin/dep
+    - chmod 777 /usr/local/bin/dep
+
 - name: setup env permissions
   file: path=/usr/local/bin mode=0777
