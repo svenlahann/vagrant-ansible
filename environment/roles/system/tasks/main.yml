@@ -1,5 +1,4 @@
 ---
 - include: apt.yml
 - include: system.yml
-- include: shell.yml
 - include: java.yml

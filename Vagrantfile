@@ -63,6 +63,16 @@ Vagrant.configure(2) do |config|
     vb.cpus = 2
     vb.customize ["modifyvm", :id, "--ioapic", "on"]
   end
+
+  config.vm.provider "parallels" do |prl|
+    prl.name = "vagrant"
+    prl.memory = 2048
+    prl.cpus = 2
+    prl.linked_clone = true
+    prl.check_guest_tools = true
+    prl.update_guest_tools = true
+  end
+
   #
   # View the documentation for the provider you are using for more
   # information on available options.

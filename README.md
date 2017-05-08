@@ -1,7 +1,8 @@
-Vagrant LAMP Setup
+Vagrant LEMP Setup
 ================================
 
 **vagrant setup for professional modern php development**
+The vagrant box is preconfigured for usage with the virtualbox and the parallels provider.
 
 Requirements
 ------------
@@ -53,17 +54,17 @@ $ vagrant ssh
 
 #### Compatibility and Installation
 
-The system is compatible with OSX, Windows and Linux. It´s tested on OSX Yosemite and El Capitan and Windows 10. I will not go into installation details here, but on Windows 10 you´ll need to install a proper windows shell like [Babun](http://babun.github.io/) or [Cygwin](https://www.cygwin.com/). Please take note, that in most of cases you should use the current stable version of any software installed for the best experience.
+The system is compatible with OSX, Windows and Linux. It´s tested on OSX Yosemite and El Capitan and Windows 10. I will not go into installation details here, but on Windows 10 you´ll need to install a proper windows shell like [Babun](http://babun.github.io/) or [Cygwin](https://www.cygwin.com/). Please take note, that in most of cases you should use current stable versions of the software required for best experience.
 
 System Configuration
 --------------------
-* OS: Debian Jessie
+* OS: Ubuntu 16.04 LTS (Xenial Xerus)
 * RAM: 2GB
 
 SSH Configuration
 -----------------
 * System IP: 192.168.33.10
-* Hostname: app.loc
+* Hostname: app.dev
 
 Shares
 ------
@@ -73,13 +74,14 @@ Shares
 
 PHP Configuration
 -----------------
-* Depending on developer´s need, the system is able to run either php5 (as debian core package) or php7 (php7.1).
+* The system uses the os packaged php version - in case of ubuntu 16.04 it´s php7.0.
 
 Application Configuration
 -------------------------
 * Nginx is running on default port 80
 * MongoDB is running on default port 27017
 * Redis is running on default port 6379
+* Elasticsearch is running on port 9200
 
 Setup
 -----
@@ -103,6 +105,8 @@ Setup
 
 * mongodb
 * redis
+* elasticsearch
+* apache solr
 
 #### Installed php modules
 
@@ -128,7 +132,7 @@ Setup
 
 Links
 -----
-* [Ansible](http://www.ansible.com) - "The simplest way to automate." 
+* [Ansible](http://www.ansible.com) - "The simplest way to automate."
 * [Vagrant](https://www.vagrantup.com) - "Development environments made easy."
 * [Composer](https://getcomposer.org) - "Dependency Manager for PHP"
 * [Symfony Installer](https://symfony.com/doc/current/book/installation.html) - "Installing the Symfony Installer"
@@ -141,3 +145,4 @@ Links
 * [Tomcat](http://tomcat.apache.org/) - "Apache Tomcat"
 * [Solr](http://tomcat.apache.org/) - "Apache Solr"
 * [Redis](http://redis.io/) - "Redis is an in-memory data structure store"
+* [Elasticsearch](https://www.elastic.co/products/elasticsearch) - "Elasticsearch is a distributed, RESTful search and analytics engine capable of solving a growing number of use cases."
