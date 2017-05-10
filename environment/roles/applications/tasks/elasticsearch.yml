@@ -1,21 +1,22 @@
 ---
-- name: Import elasticsearch apt key
+- name: import elasticsearch apt key
   apt_key:
     url: "https://artifacts.elastic.co/GPG-KEY-elasticsearch"
     state: present
 
-- name: Add elasticsearch repository
+- name: add elasticsearch repository
   apt_repository:
     repo: deb https://artifacts.elastic.co/packages/5.x/apt stable main
     state: present
 
-- name: Install elasticsearch
+- name: install elasticsearch
   apt:
     name: elasticsearch
+    state: present
     allow_unauthenticated: yes
     update_cache: yes
 
-- name: Start elasticsearch
+- name: start elasticsearch
   service:
     name: elasticsearch
     state: started
