@@ -2,7 +2,7 @@ Vagrant LEMP Setup
 ================================
 
 **vagrant setup for professional modern php development**
-The vagrant box is preconfigured for usage with the virtualbox and the parallels provider.
+The vagrant box is preconfigured for usage with virtualbox and parallels provider.
 
 Requirements
 ------------
@@ -107,6 +107,8 @@ Setup
 * redis
 * elasticsearch
 * apache solr
+* docker
+* deployer
 
 #### Installed php modules
 
@@ -146,3 +148,5 @@ Links
 * [Solr](http://tomcat.apache.org/) - "Apache Solr"
 * [Redis](http://redis.io/) - "Redis is an in-memory data structure store"
 * [Elasticsearch](https://www.elastic.co/products/elasticsearch) - "Elasticsearch is a distributed, RESTful search and analytics engine capable of solving a growing number of use cases."
+* [Docker](https://www.docker.com/) - "Build, Ship, and Run Any App, Anywhere"
+* [Deployer](https://deployer.org/) - "Deployment Tool for PHP"
