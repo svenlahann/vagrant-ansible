@@ -12,8 +12,8 @@ server {
 
 	server_name app.dev;
 
-	access_log /var/log/nginx/app.dev.access.log;
-    error_log  /var/log/nginx/app.dev.error.log;
+	access_log /home/vagrant/log/nginx/app.dev.access.log;
+    error_log  /home/vagrant/log/nginx/app.dev.error.log;
 
 	location / {
         location ~* "^/themes/Frontend/Responsive/frontend/_public/vendors/fonts/open-sans-fontface/(?:.+)\.(?:ttf|eot|svg|woff)$" {

@@ -2,7 +2,7 @@ Vagrant LEMP Setup
 ================================
 
 **vagrant setup for professional modern php development**
-The vagrant box is preconfigured for usage with virtualbox and parallels provider.
+This vagrant box is preconfigured to use either with Virtualbox or Parallels provider.
 
 Requirements
 ------------
@@ -63,7 +63,7 @@ System Configuration
 
 SSH Configuration
 -----------------
-* System IP: 192.168.33.10
+* System IP: 10.10.10.100
 * Hostname: app.dev
 
 Shares
