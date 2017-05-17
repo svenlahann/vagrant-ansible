@@ -30,7 +30,7 @@ Vagrant.configure(2) do |config|
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
-  config.vm.network "private_network", ip: "10.10.10.100"
+  config.vm.network "private_network", ip: "11.11.11.111"
 
   # Set machine hostname for project
   config.vm.hostname = "app.dev"
@@ -92,9 +92,12 @@ Vagrant.configure(2) do |config|
   # SHELL
 
   # SSH Configuration Options
-  # config.ssh.forward_agent = true
-  # config.ssh.username = "vagrant"
-  # config.ssh.password = "vagrant"
+  config.ssh.forward_agent = true
+  config.ssh.username = "vagrant"
+  config.ssh.password = "vagrant"
+  config.ssh.insert_key = true
+  #config.ssh.host = "11.11.11.111"
+  #config.ssh.port = "22"
 
   config.vm.provision "ansible" do |ansible|
     # ansible.install_mode = :pip
