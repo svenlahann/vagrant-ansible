@@ -26,6 +26,9 @@
 - name: install php mcrypt
   apt: name=php5-mcrypt state=present
 
+- name: install php ldap
+  apt: name=php5-ldap state=present
+
 - name: init php.ini for apache
   template:
     src=php5.ini.j2

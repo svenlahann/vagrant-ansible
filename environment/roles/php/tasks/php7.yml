@@ -38,6 +38,9 @@
 - name: install php7.0-zip
   apt: name=php-zip state=present
 
+- name: install php7.0-ldap
+  apt: name=php-ldap state=present
+
 - name: init php.ini for nginx
   template:
     src=php7.ini.j2
