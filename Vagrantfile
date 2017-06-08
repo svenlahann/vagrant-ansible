@@ -78,13 +78,11 @@ Vagrant.configure(2) do |config|
 
   # SSH Configuration Options
   config.ssh.forward_agent = true
-  config.ssh.username = "vagrant"
-  config.ssh.password = "vagrant"
   config.ssh.insert_key = true
 
-  config.vm.provision "ansible_local" do |ansible|
-    ansible.install_mode = :pip
-    ansible.version = "latest"
+  config.vm.provision "ansible" do |ansible|
+    # ansible.install_mode = :pip
+    # ansible.version = "latest"
     ansible.playbook = "environment/playbook.yml"
     # ansible.galaxy_role_file = "environment/requirements.yml"
     # ansible.verbose = true
