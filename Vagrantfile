@@ -27,10 +27,10 @@ Vagrant.configure(2) do |config|
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
-  config.vm.network "private_network", ip: "192.168.33.10"
+  config.vm.network "private_network", ip: "11.11.11.111"
 
   # Create machine hostname for project
-  config.vm.hostname = "app.loc"
+  config.vm.hostname = "app.dev"
 
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
@@ -44,7 +44,7 @@ Vagrant.configure(2) do |config|
   config.vm.synced_folder "htdocs", "/home/vagrant/htdocs", type: "nfs"
   config.vm.synced_folder "craft", "/home/vagrant/craft", type: "nfs"
   config.vm.synced_folder "log", "/home/vagrant/log", type: "nfs"
-  
+
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
@@ -55,6 +55,8 @@ Vagrant.configure(2) do |config|
 
     # Customize the amount of memory on the VM:
     vb.memory = "2048"
+    vb.cpus = 2
+    vb.customize ["modifyvm", :id, "--ioapic", "on"]
   end
   #
   # View the documentation for the provider you are using for more
@@ -73,6 +75,12 @@ Vagrant.configure(2) do |config|
   # config.vm.provision "shell", inline <<-SHELL
   #   sudo apt-get install apache2
   # SHELL
+
+  # SSH Configuration Options
+  config.ssh.forward_agent = true
+  config.ssh.username = "vagrant"
+  config.ssh.password = "vagrant"
+  config.ssh.insert_key = true
 
   config.vm.provision "ansible_local" do |ansible|
     ansible.install_mode = :pip
