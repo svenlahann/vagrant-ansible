@@ -7,7 +7,9 @@
 - name: restart nginx
   become: true
   become_user: root
-  command: service nginx restart
+  service:
+    name: nginx
+    state: restarted
 
 - name: restart exim4
   become: true
@@ -17,4 +19,4 @@
 - name: restart php processor
   become: true
   become_user: root
-  command: sudo systemctl restart php7.0-fpm
+  command: systemctl restart php7.0-fpm
