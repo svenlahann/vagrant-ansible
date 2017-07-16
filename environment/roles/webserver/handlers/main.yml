@@ -7,7 +7,9 @@
 - name: restart nginx
   become: true
   become_user: root
-  command: service nginx restart
+  service:
+    name: nginx
+    state: restarted
 
 - name: restart exim4
   become: true

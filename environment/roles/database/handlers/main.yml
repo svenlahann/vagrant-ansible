@@ -1,0 +1,6 @@
+- name: restart mysql
+  become: true
+  become_user: root
+  service:
+    name: mysql
+    state: restarted

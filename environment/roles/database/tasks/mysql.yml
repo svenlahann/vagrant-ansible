@@ -10,6 +10,13 @@
 - name: install mysql
   apt: name=mysql-server state=present
 
+- name: init my.cnf
+  template:
+    src=mysqld.cnf.j2
+    dest=/etc/mysql/mysql.conf.d/mysqld.cnf
+  notify:
+    - restart mysql
+
 - name: install python-mysqldb
   apt: name=python-mysqldb state=present
 
