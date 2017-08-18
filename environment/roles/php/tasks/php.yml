@@ -29,6 +29,9 @@
 - name: install php ldap
   apt: name=php5-ldap state=present
 
+- name: install php mongo
+  apt: name=php5-mongo state=present
+
 - name: init php.ini for apache
   template:
     src=php5.ini.j2

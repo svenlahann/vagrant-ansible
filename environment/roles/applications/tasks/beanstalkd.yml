@@ -1,0 +1,3 @@
+---
+- name: install beanstalkd
+  apt: name=beanstalkd state=present
