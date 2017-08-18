@@ -9,7 +9,7 @@
   apt: name=memcached state=present
 
 - name: install sqlite3
-  apt: name=memcached state=present
+  apt: name=sqlite3 state=present
 
 - name: install git
   apt: name=git state=present
