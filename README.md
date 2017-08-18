@@ -91,6 +91,7 @@ Setup
 * curl
 * memcached
 * mysql
+* sqlite3
 * apache
 * php / php7.1
 * exim4
