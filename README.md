@@ -1,7 +1,7 @@
-Vagrant LEMP Setup
-================================
+Vagrant LEMP Setup for modern web development
+=============================================
 
-**vagrant setup for professional modern php development**
+**vagrant setup for professional modern web development**
 This vagrant box is preconfigured to use either with Virtualbox or Parallels provider.
 
 Requirements
@@ -54,7 +54,7 @@ $ vagrant ssh
 
 #### Compatibility and Installation
 
-The system is compatible with OSX, Windows and Linux. It´s tested on OSX Yosemite and El Capitan and Windows 10. I will not go into installation details here, but on Windows 10 you´ll need to install a proper windows shell like [Babun](http://babun.github.io/) or [Cygwin](https://www.cygwin.com/). Please take note, that in most of cases you should use current stable versions of the software required for best experience.
+The system is compatible with OSX, Windows and Linux. It´s tested on OSX Yosemite and El Capitan and Windows 10. I will not go into installation details here, but on Windows 10 you´ll need to install a proper shell like [Babun](http://babun.github.io/) or [Cygwin](https://www.cygwin.com/). Please take note, that in most of cases you should use current stable versions of the software required for best experience.
 
 System Configuration
 --------------------
@@ -81,7 +81,8 @@ Application Configuration
 * Nginx is running on default port 80
 * MongoDB is running on default port 27017
 * Redis is running on default port 6379
-* Elasticsearch is running on port 9200
+* Elasticsearch is running on default port 9200
+* Beanstalkd is running on default port 11300
 
 Setup
 -----
@@ -93,11 +94,13 @@ Setup
 * mysql
 * sqlite3
 * apache
-* php / php7.1
+* php / php7.0
 * exim4
 * git
 * midnight commander
 * java 8 openjdk
+* ruby 2.4
+* python
 * ant
 * ack-grep
 * vim
@@ -106,6 +109,7 @@ Setup
 
 * mongodb
 * redis
+* beanstalkd
 * elasticsearch
 * apache solr
 * docker
@@ -119,7 +123,13 @@ Setup
 * xdebug
 * curl
 * memcached
+* sqlite3
 * mcrypt
+* xml
+* mbstring
+* zip
+* ldap
+* mongodb
 * ioncube
 
 #### Global helpers
@@ -149,5 +159,7 @@ Links
 * [Solr](http://tomcat.apache.org/) - "Apache Solr"
 * [Redis](http://redis.io/) - "Redis is an in-memory data structure store"
 * [Elasticsearch](https://www.elastic.co/products/elasticsearch) - "Elasticsearch is a distributed, RESTful search and analytics engine capable of solving a growing number of use cases."
+* [MongoDB](https://www.mongodb.com/) - "MongoDB is a document database with the scalability and flexibility that you want with the querying and indexing that you need"
+* [Beanstalkd](http://kr.github.io/beanstalkd/) - "Beanstalk is a simple, fast work queue."
 * [Docker](https://www.docker.com/) - "Build, Ship, and Run Any App, Anywhere"
 * [Deployer](https://deployer.org/) - "Deployment Tool for PHP"
