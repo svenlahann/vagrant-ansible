@@ -54,7 +54,7 @@ $ vagrant ssh
 
 #### Compatibility and Installation
 
-The system is compatible with OSX, Windows and Linux. It´s tested on OSX Yosemite and El Capitan and Windows 10. I will not go into installation details here, but on Windows 10 you´ll need to install a proper shell like [Babun](http://babun.github.io/) or [Cygwin](https://www.cygwin.com/). Please take note, that in most of cases you should use current stable versions of the software required for best experience.
+The system is compatible with OSX, Windows and Linux. It´s tested on OSX Yosemite and El Capitan and Windows 10. Please consider updating the required software from time to time.
 
 System Configuration
 --------------------
@@ -86,7 +86,7 @@ Application Configuration
 
 Setup
 -----
-#### Installed system packages
+#### Installed packages
 
 * imagemagick
 * curl
