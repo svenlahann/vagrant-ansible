@@ -30,7 +30,7 @@ Vagrant.configure(2) do |config|
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
-  config.vm.network "private_network", ip: "11.11.11.111"
+  config.vm.network "private_network", ip: "10.10.10.10"
 
   # Set machine hostname for project
   config.vm.hostname = "app.dev"
@@ -53,7 +53,7 @@ Vagrant.configure(2) do |config|
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
-  #
+  
   config.vm.provider "virtualbox" do |vb|
     # Display the VirtualBox GUI when booting the machine
     # vb.gui = true
@@ -99,9 +99,9 @@ Vagrant.configure(2) do |config|
   #config.ssh.host = "11.11.11.111"
   #config.ssh.port = "22"
 
-  config.vm.provision "ansible" do |ansible|
-    # ansible.install_mode = :pip
-    # ansible.version = "latest"
+  config.vm.provision "ansible_local" do |ansible|
+    ansible.install_mode = :pip
+    ansible.version = "latest"
     ansible.playbook = "environment/playbook.yml"
     # ansible.galaxy_role_file = "environment/requirements.yml"
     # ansible.verbose = true

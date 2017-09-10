@@ -1,4 +1,6 @@
 ---
+# php 7.0 installation
+
 - name: install php7.0-fpm
   apt: name=php-fpm state=present
 
@@ -81,12 +83,12 @@
 
 - name: init ioncube.ini
   template:
-    src=ioncube.ini.j2
+    src=php7.ioncube.ini.j2
     dest=/etc/php/7.0/fpm/conf.d/00-ioncube.ini
 
 - name: init ioncube.ini for cli
   template:
-    src=ioncube.ini.j2
+    src=php7.ioncube.ini.j2
     dest=/etc/php/7.0/cli/conf.d/00-ioncube.ini
   notify:
     - restart php processor

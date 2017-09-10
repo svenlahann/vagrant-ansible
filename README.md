@@ -74,7 +74,7 @@ Shares
 
 PHP Configuration
 -----------------
-* The system uses the os packaged php version - in case of ubuntu 16.04 it´s php7.0.
+* Per default the system uses the os packaged php version - in case of ubuntu 16.04 it´s php7.0. As an alternative you can install php5.6 packages. PHP modules and extensions for both versions are the same.
 
 Application Configuration
 -------------------------
