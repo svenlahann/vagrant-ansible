@@ -1,0 +1,31 @@
+---
+# docker installation
+
+- name: import docker apt key
+  apt_key:
+    url: "https://download.docker.com/linux/ubuntu/gpg"
+    state: present
+
+- name: add docker repository
+  apt_repository:
+    repo: deb https://download.docker.com/linux/ubuntu xenial stable
+    state: present
+
+- name: update apt cache
+  apt: update_cache=yes
+
+- name: install docker
+  apt:
+    name: docker-ce
+    state: present
+
+- name: install docker-compose
+  become: true
+  become_user: root
+  command: "{{ item }}"
+  args:
+    chdir: /home/vagrant/
+  with_items:
+    - wget https://github.com/docker/compose/releases/download/1.13.0/docker-compose-Linux-x86_64
+    - mv docker-compose-Linux-x86_64 /usr/local/bin/docker-compose
+    - chmod +x /usr/local/bin/docker-compose

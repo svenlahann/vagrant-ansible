@@ -1,4 +1,7 @@
 ---
+- name: remove nginx
+  apt: pkg=nginx state=absent purge=yes
+
 - name: install apache
   apt: name=apache2 state=present
 
@@ -45,4 +48,4 @@
     dest=/etc/apache2/sites-enabled/vagrant.conf
     state=link
   notify:
-    - reload apache
+    - restart apache

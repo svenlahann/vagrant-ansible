@@ -8,14 +8,32 @@
 - name: install memcached
   apt: name=memcached state=present
 
+- name: install sqlite3
+  apt: name=sqlite3 state=present
+
 - name: install git
   apt: name=git state=present
+
+- name: install python
+  apt: name=python state=present  
 
 - name: install midnight commander
   apt: name=mc state=present
 
 - name: install ant
   apt: name=ant state=present
+
+- name: install ack-grep
+  apt: name=ack-grep state=present
+
+- name: install vim
+  apt: name=vim state=present
+
+- name: install pwgen
+  apt: name=pwgen state=present
+
+- name: install uuid
+  apt: name=uuid state=present
 
 - name: install npm apt sources
   shell: curl https://nodejs.org/dist/v5.10.1/node-v5.10.1-linux-x64.tar.xz | tar --file=- --extract --xz --directory /usr/local/ --strip-components=1

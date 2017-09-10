@@ -1,0 +1,94 @@
+---
+# php 7.0 installation
+
+- name: install php7.0-fpm
+  apt: name=php-fpm state=present
+
+- name: install php7.0-cli
+  apt: name=php-cli state=present
+
+- name: install php7.0-mysql
+  apt: name=php-mysql state=present
+
+- name: install php7.0-gd
+  apt: name=php-gd state=present
+
+- name: install php7.0-imagemagick
+  apt: name=php-imagick state=present
+
+- name: install php7.0-xdebug
+  apt: name=php-xdebug state=present
+
+- name: install php7.0-curl
+  apt: name=php-curl state=present
+
+- name: install php7.0-sqlite3
+  apt: name=php-sqlite3 state=present
+
+- name: install php7.0-memcached
+  apt: name=php-memcached state=present
+
+- name: install php7.0-mcrypt
+  apt: name=php-mcrypt state=present
+
+- name: install php7.0-xml
+  apt: name=php-xml state=present
+
+- name: install php7.0-mbstring
+  apt: name=php-mbstring state=present
+
+- name: install php7.0-zip
+  apt: name=php-zip state=present
+
+- name: install php7.0-ldap
+  apt: name=php-ldap state=present
+
+- name: install php7.0-mongodb
+  apt: name=php-mongodb state=present
+
+- name: init php.ini for nginx
+  template:
+    src=php7.ini.j2
+    dest=/etc/php/7.0/fpm/conf.d/00-php.ini
+
+- name: init php.ini for cli
+  template:
+    src=php7.ini.j2
+    dest=/etc/php/7.0/cli/conf.d/00-php.ini
+
+- name: init xdebug.ini for nginx
+  template:
+    src=xdebug.ini.j2
+    dest=/etc/php/7.0/fpm/conf.d/90-xdebug.ini
+
+- name: init xdebug.ini for cli
+  template:
+    src=xdebug.ini.j2
+    dest=/etc/php/7.0/cli/conf.d/90-xdebug.ini
+  notify:
+    - restart php processor
+
+- name: install ioncube for php7.0
+  command: "{{ item }}"
+  become: true
+  become_user: root
+  args:
+    chdir: /home/vagrant/
+  with_items:
+    - wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz
+    - tar xzf ioncube_loaders_lin_x86-64.tar.gz
+    - cp /home/vagrant/ioncube/ioncube_loader_lin_7.0.so /usr/lib/php/20151012
+    - rm -rf /home/vagrant/ioncube
+    - rm ioncube_loaders_lin_x86-64.tar.gz
+
+- name: init ioncube.ini
+  template:
+    src=php7.ioncube.ini.j2
+    dest=/etc/php/7.0/fpm/conf.d/00-ioncube.ini
+
+- name: init ioncube.ini for cli
+  template:
+    src=php7.ioncube.ini.j2
+    dest=/etc/php/7.0/cli/conf.d/00-ioncube.ini
+  notify:
+    - restart php processor

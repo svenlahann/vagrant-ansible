@@ -1,8 +1,15 @@
 ---
-- name: reload apache
+- name: restart apache
   become: true
   become_user: root
   command: /etc/init.d/apache2 restart
+
+- name: restart nginx
+  become: true
+  become_user: root
+  service:
+    name: nginx
+    state: restarted
 
 - name: restart exim4
   become: true

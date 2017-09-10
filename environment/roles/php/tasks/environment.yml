@@ -12,22 +12,14 @@
   become_user: vagrant
   with_items:
     - composer global require "laravel/installer"
-    - echo 'export PATH="$PATH:$HOME/.composer/vendor/bin"' >> ~/.bashrc
+    - echo 'export PATH="$PATH:$HOME/.config/composer/vendor/bin"' >> ~/.bashrc
 
 - name: install drush
   command: "{{ item }}"
   with_items:
     - wget http://files.drush.org/drush.phar
-    - chmod +x drush.phar
+    - chmod 777 drush.phar
     - mv drush.phar /usr/local/bin/drush
-
-- name: install drupal console
-  command: "{{ item }}"
-  with_items:
-    - curl https://drupalconsole.com/installer -L -o drupal.phar
-    - chmod +x drupal.phar
-    - mv drupal.phar /usr/local/bin/drupal
-    - drupal init
 
 - name: install shopware cli tools
   command: "{{ item }}"
@@ -35,6 +27,13 @@
     - wget http://shopwarelabs.github.io/sw-cli-tools/sw.phar
     - chmod 777 sw.phar
     - mv sw.phar /usr/local/bin/sw
+
+- name: install deployer
+  command: "{{ item }}"
+  with_items:
+    - curl -LO https://deployer.org/deployer.phar
+    - mv deployer.phar /usr/local/bin/dep
+    - chmod 777 /usr/local/bin/dep
 
 - name: setup env permissions
   file: path=/usr/local/bin mode=0777

@@ -12,7 +12,10 @@ Vagrant.configure(2) do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "debian/jessie64"
+  # Uses non official box for ubuntu xenial 64, as offical ubuntu package is 
+  # not compliant to vagrant standards...
+  # Box supports virtual box, vmware and parallels provider
+  config.vm.box = "bento/ubuntu-16.04"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -27,9 +30,11 @@ Vagrant.configure(2) do |config|
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
-  config.vm.network "private_network", ip: "11.11.11.111"
 
   # Create machine hostname for project
+  config.vm.network "private_network", ip: "10.10.10.10"
+
+  # Set machine hostname for project
   config.vm.hostname = "app.dev"
 
   # Create a public network, which generally matched to bridged network.
@@ -37,10 +42,12 @@ Vagrant.configure(2) do |config|
   # your network.
   # config.vm.network "public_network"
 
-  # Share an additional folder to the guest VM. The first argument is
-  # the path on the host to the actual folder. The second argument is
-  # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
+
+  # config.vm.synced_folder "htdocs", "/home/vagrant/htdocs", type: "rsync", rsync_exclude: ".git/"
+  # config.vm.synced_folder "craft", "/home/vagrant/craft", type: "rsync", rsync_exclude: ".git/"
+  # config.vm.synced_folder "log", "/home/vagrant/log", type: "rsync", rsync_exclude: ".git/"
+
   config.vm.synced_folder "htdocs", "/home/vagrant/htdocs", type: "nfs"
   config.vm.synced_folder "craft", "/home/vagrant/craft", type: "nfs"
   config.vm.synced_folder "log", "/home/vagrant/log", type: "nfs"
@@ -48,7 +55,7 @@ Vagrant.configure(2) do |config|
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
-  #
+  
   config.vm.provider "virtualbox" do |vb|
     # Display the VirtualBox GUI when booting the machine
     # vb.gui = true
@@ -58,6 +65,16 @@ Vagrant.configure(2) do |config|
     vb.cpus = 2
     vb.customize ["modifyvm", :id, "--ioapic", "on"]
   end
+
+  config.vm.provider "parallels" do |prl|
+    prl.name = "vagrant"
+    prl.memory = 2048
+    prl.cpus = 2
+    prl.linked_clone = true
+    prl.check_guest_tools = true
+    prl.update_guest_tools = true
+  end
+
   #
   # View the documentation for the provider you are using for more
   # information on available options.
@@ -81,6 +98,8 @@ Vagrant.configure(2) do |config|
   config.ssh.username = "vagrant"
   config.ssh.password = "vagrant"
   config.ssh.insert_key = true
+  #config.ssh.host = "11.11.11.111"
+  #config.ssh.port = "22"
 
   config.vm.provision "ansible_local" do |ansible|
     ansible.install_mode = :pip

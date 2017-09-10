@@ -1,4 +1,6 @@
 ---
+# solr installation (outdated)
+
 - name: clear solr installation
   file: path=/opt/solr state=absent
 

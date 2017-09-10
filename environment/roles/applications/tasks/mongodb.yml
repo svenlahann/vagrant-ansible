@@ -1,0 +1,25 @@
+---
+# mongdb installation
+# https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
+
+- block:
+  - name: import mongodb apt key
+    apt_key:
+      keyserver: keyserver.ubuntu.com
+      id: 0C49F3730359A14518585931BC711F9BA15703C6
+  - name: add mongodb repository
+    apt_repository:
+      repo: deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse
+      state: present
+  - name: install mongodb
+    apt:
+      name: mongodb-org
+      update_cache: yes
+  - name: start mongodb
+    become: true
+    become_user: root
+    command: "{{ item }}"
+    args:
+      chdir: /home/vagrant/
+    with_items:
+      - service mongod start

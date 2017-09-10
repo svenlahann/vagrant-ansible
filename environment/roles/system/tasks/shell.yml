@@ -1,0 +1,47 @@
+---
+- name: install git-core
+  apt: name=git-core state=present
+
+- name: install fonts-powerline
+  apt: name=fonts-powerline state=present
+
+- name: install ttf-ancient-fonts
+  apt: name=ttf-ancient-fonts state=present
+
+- name: reset zsh folders
+  become: true
+  become_user: root
+  file:
+    path: /home/vagrant/.oh-my-zsh
+    state: absent
+
+- name: install zsh
+  apt: name=zsh state=present
+
+- name: install and configure zsh
+  shell: "{{ item }}"
+  become: true
+  become_user: vagrant
+  with_items:
+    - git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+    - cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+
+- name: install custom theme
+  become: true
+  become_user: vagrant
+  get_url:
+    url: http://raw.github.com/zakaziko99/agnosterzak-ohmyzsh-theme/master/agnosterzak.zsh-theme
+    dest: ~/.oh-my-zsh/themes/agnosterzak.zsh-theme
+
+- name: set zsh theme
+  become: true
+  become_user: vagrant
+  lineinfile:
+      dest: /home/vagrant/.zshrc
+      regexp: '^\s*ZSH_THEME=".*$'
+      line: ZSH_THEME="agnoster"
+
+- name: set ssh shell
+  user:
+    name: vagrant
+    shell: /bin/zsh

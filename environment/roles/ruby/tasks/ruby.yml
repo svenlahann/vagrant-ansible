@@ -1,0 +1,24 @@
+---
+- name: install ruby dependencies
+  apt: name="{{item}}" state=present
+  with_items:
+       - autoconf
+       - bison
+       - build-essential
+       - libssl-dev
+       - libyaml-dev
+       - libreadline6-dev
+       - zlib1g-dev
+       - libncurses5-dev
+       - libffi-dev
+       - libgdbm3
+       - libgdbm-dev
+
+- name: install rvm
+  shell: \curl -L https://get.rvm.io | bash -s stable --autolibs=3 creates=~/.rvm
+
+- name: install ruby 2.4
+  shell: /usr/local/rvm/bin/rvm install 2.4
+
+- name: set default ruby version
+  shell: /usr/local/rvm/bin/rvm alias create default 2.4

@@ -1,6 +1,21 @@
 ---
+- name: Specify MySQL root password before installing
+  debconf: name='mysql-server' question='mysql-server/root_password' value='root' vtype='password'
+  become: true
+
+- name: Confirm MySQL root password before installing
+  debconf: name='mysql-server' question='mysql-server/root_password_again' value='root' vtype='password'
+  become: true
+
 - name: install mysql
   apt: name=mysql-server state=present
+
+- name: init my.cnf
+  template:
+    src=mysqld.cnf.j2
+    dest=/etc/mysql/mysql.conf.d/mysqld.cnf
+  notify:
+    - restart mysql
 
 - name: install python-mysqldb
   apt: name=python-mysqldb state=present
@@ -10,9 +25,20 @@
   register: database
 
 - name: create database (only when present)
-  mysql_db: name=database state=present collation=utf8_general_ci encoding=utf8
+  mysql_db:
+    name: database
+    state: present
+    collation: utf8_general_ci
+    encoding: utf8
+    login_user: root
+    login_password: root
   when: database.stat.exists == true
 
 - name: import database (only when present)
-  mysql_db: name=database state=import target=/home/vagrant/craft/database.sql
+  mysql_db:
+    name: database
+    state: import
+    target: /home/vagrant/craft/database.sql
+    login_user: root
+    login_password: root
   when: database.stat.exists == true

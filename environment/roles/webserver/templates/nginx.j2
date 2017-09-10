@@ -1,0 +1,90 @@
+server {
+
+	listen 80 default_server;
+	listen [::]:80 default_server;
+
+	root /home/vagrant/htdocs;
+
+	# Add index.php to the list if you are using PHP
+	index index.php index.html index.htm index.nginx-debian.html;
+
+	server_name app.dev;
+
+	access_log /home/vagrant/log/app.dev.access.log;
+    error_log  /home/vagrant/log/app.dev.error.log;
+
+	location / {
+        location ~* "^/themes/Frontend/Responsive/frontend/_public/vendors/fonts/open-sans-fontface/(?:.+)\.(?:ttf|eot|svg|woff)$" {
+            expires max;
+            add_header Cache-Control "public";
+            access_log off;
+            log_not_found off;
+        }
+
+        location ~* "^/themes/Frontend/Responsive/frontend/_public/src/fonts/(?:.+)\.(?:ttf|eot|svg|woff)$" {
+            expires max;
+            add_header Cache-Control "public";
+            access_log off;
+            log_not_found off;
+        }
+
+        location ~* "^/web/cache/(?:[0-9]{10})_(?:.+)\.(?:js|css)$" {
+            expires max;
+            add_header Cache-Control "public";
+            access_log off;
+            log_not_found off;
+        }
+
+        ## All static files will be served directly.
+        location ~* ^.+\.(?:css|cur|js|jpe?g|gif|ico|png|svg|html)$ {
+            ## Defining rewrite rules
+            rewrite files/documents/.* /engine last;
+            rewrite backend/media/(.*) /media/$1 last;
+
+            expires 1w;
+            add_header Cache-Control "public, must-revalidate, proxy-revalidate";
+
+            access_log off;
+            # The directive enables or disables messages in error_log about files not found on disk.
+            log_not_found off;
+
+            tcp_nodelay off;
+            ## Set the OS file cache.
+            open_file_cache max=3000 inactive=120s;
+            open_file_cache_valid 45s;
+            open_file_cache_min_uses 2;
+            open_file_cache_errors off;
+
+            ## Fallback to shopware
+            ## comment in if needed
+            try_files $uri /shopware.php?controller=Media&action=fallback;
+        }
+
+		index shopware.php index.php;
+        try_files $uri $uri/ /shopware.php$is_args$args;
+    }
+
+	location ~ \.php$ {
+		include snippets/fastcgi-php.conf;
+	#
+	#	# With php7.0-cgi alone:
+	#	fastcgi_pass 127.0.0.1:9000;
+	#	# With php7.0-fpm:
+		fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+	}
+
+	# deny access to .htaccess files, if Apache's document root
+	# concurs with nginx's one
+	#
+	location ~ /\.ht {
+		deny all;
+	}
+
+	location /recovery/install/ {
+        location /recovery/install/assets {
+        }
+        if (!-e $request_filename){
+                rewrite . /recovery/install/index.php last;
+        }
+    }
+}
