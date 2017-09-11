@@ -66,7 +66,7 @@
     src=xdebug.ini.j2
     dest=/etc/php/5.6/fpm/conf.d/90-xdebug.ini
   notify:
-  - reload apache
+    - restart php 5.6 processor
 
 - name: init xdebug.ini for cli
   template:
@@ -95,3 +95,5 @@
   template:
     src=php5.ioncube.ini.j2
     dest=/etc/php/5.6/cli/conf.d/00-ioncube.ini
+  notify:
+    - restart php 5.6 processor
