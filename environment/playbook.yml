@@ -14,5 +14,5 @@
     - webserver
     - database
     - php
-    - ruby
+    # - ruby
     - applications
