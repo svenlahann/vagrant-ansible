@@ -53,12 +53,12 @@
 
 - name: init php.ini for apache
   template:
-    src=php5.ini.j2
+    src=php5.6.ini.j2
     dest=/etc/php/5.6/fpm/conf.d/00-php.ini
 
 - name: init php.ini for cli
   template:
-    src=php5.ini.j2
+    src=php5.6.ini.j2
     dest=/etc/php/5.6/cli/conf.d/00-php.ini
 
 - name: init xdebug.ini for apache
@@ -88,12 +88,12 @@
 
 - name: init ioncube.ini
   template:
-    src=php5.ioncube.ini.j2
+    src=php5.6.ioncube.ini.j2
     dest=/etc/php/5.6/fpm/conf.d/00-ioncube.ini
 
 - name: init ioncube.ini for cli
   template:
-    src=php5.ioncube.ini.j2
+    src=php5.6.ioncube.ini.j2
     dest=/etc/php/5.6/cli/conf.d/00-ioncube.ini
   notify:
     - restart php 5.6 processor

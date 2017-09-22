@@ -48,12 +48,12 @@
 
 - name: init php.ini for nginx
   template:
-    src=php7.ini.j2
+    src=php7.0.ini.j2
     dest=/etc/php/7.0/fpm/conf.d/00-php.ini
 
 - name: init php.ini for cli
   template:
-    src=php7.ini.j2
+    src=php7.0.ini.j2
     dest=/etc/php/7.0/cli/conf.d/00-php.ini
 
 - name: init xdebug.ini for nginx
@@ -83,12 +83,12 @@
 
 - name: init ioncube.ini
   template:
-    src=php7.ioncube.ini.j2
+    src=php7.0.ioncube.ini.j2
     dest=/etc/php/7.0/fpm/conf.d/00-ioncube.ini
 
 - name: init ioncube.ini for cli
   template:
-    src=php7.ioncube.ini.j2
+    src=php7.0.ioncube.ini.j2
     dest=/etc/php/7.0/cli/conf.d/00-ioncube.ini
   notify:
     - restart php 7.0 processor
