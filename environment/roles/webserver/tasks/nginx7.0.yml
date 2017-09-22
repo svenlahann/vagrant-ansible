@@ -1,0 +1,28 @@
+- name: remove apache
+  apt: pkg=apache2 state=absent purge=yes
+
+- name: install nginx
+  apt: pkg=nginx state=present
+
+- name: disable default virtual host
+  file:
+    path=/etc/nginx/sites-enabled/default
+    state=absent
+
+- name: remove default virtual host
+  file:
+    path=/etc/nginx/sites-available/default
+    state=absent
+
+- name: initialize virtual host
+  template:
+    src=nginx7.0.j2
+    dest=/etc/nginx/sites-available/default
+
+- name: enable virtual host
+  file:
+    src=/etc/nginx/sites-available/default
+    dest=/etc/nginx/sites-enabled/default
+    state=link
+  notify:
+    - restart nginx

@@ -16,7 +16,7 @@
 
 - name: initialize virtual host
   template:
-    src=nginx.j2
+    src=nginx5.6.j2
     dest=/etc/nginx/sites-available/default
 
 - name: enable virtual host
