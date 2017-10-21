@@ -1,4 +1,4 @@
 ---
-- include: php5.6.yml
-#- include: php7.0.yml
+- include: php7.0.yml
+#- include: php5.6.yml
 - include: environment.yml

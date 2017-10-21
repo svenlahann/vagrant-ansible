@@ -1,3 +1,4 @@
 ---
-- include: nginx5.6.yml
+- include: nginx7.0.yml
+#- include: nginx5.6.yml
 - include: mail.yml
